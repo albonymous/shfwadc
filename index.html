@@ -96,30 +96,30 @@
   </div>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const calculateButton = document.getElementById("calculateButton");
-      calculateButton.addEventListener("click", function () {
-        const rawValue = parseFloat(document.getElementById("inputRadc").value);
-        const unit = document.getElementById("unitSelector").value;
+  document.addEventListener("DOMContentLoaded", function () {
+    const calculateButton = document.getElementById("calculateButton");
+    calculateButton.addEventListener("click", function () {
+      const rawValue = parseFloat(document.getElementById("inputRadc").value);
+      const unit = document.getElementById("unitSelector").value;
 
-        if (!isNaN(rawValue)) {
-          let Radc = rawValue;
-          if (unit === "kohm") {
-            Radc *= 1000; // convert to ohms
-          }
-
-          const maxVoltage = 3.3;
-          const R1 = 10000;
-          const Vmax = (maxVoltage * (Radc + R1)) / R1;
-
-          document.getElementById("result").textContent =
-            Max Battery Voltage (Vmax): ${Vmax.toFixed(2)}V;
-        } else {
-          document.getElementById("result").textContent =
-            "Please enter a valid Radc value.";
+      if (!isNaN(rawValue)) {
+        let Radc = rawValue;
+        if (unit === "kohm") {
+          Radc *= 1000;
         }
-      });
+
+        const maxVoltage = 3.3;
+        const R1 = 10000;
+        const Vmax = (maxVoltage * (Radc + R1)) / R1;
+
+        document.getElementById("result").textContent =
+          Max Battery Voltage (Vmax): ${Vmax.toFixed(2)}V;
+      } else {
+        document.getElementById("result").textContent =
+          "Please enter a valid Radc value.";
+      }
     });
-  </script>
+  });
+</script>
 </body>
 </html>
